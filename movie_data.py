@@ -1,4 +1,4 @@
-genres = ['Romance', 'Horror', 'Drama', 'Animation', 'Musical', 'Documentary', 'Action']
+genres = ['romance', 'horror', 'drama', 'animation', 'musical', 'documentary', 'action']
 movies = [[['romance'], "The Notebook", "Nick Cassavetes", 2004],
           [['horror'], "Halloween", "John Carpenter", 1978],
           [['animation', 'family'], "Spirited Away", "Hayao Miyazaki", 2001],
