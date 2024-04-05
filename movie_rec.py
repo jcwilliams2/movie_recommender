@@ -1,12 +1,13 @@
 from movie_data import *
 from linkedlist import LinkedList
 
+program_name = 'Cinema List'
+
 def greeting():
-    program_name = 'Cinema List'
-    print("Welcome to " + program_name + "!")
+    print("Welcome to " + program_name + "!\n")
 
 def farewell():
-    print("Goodbye")
+    print("\nGoodbye and thank you for using " + program_name + "!")
 
 def establish_movie_dataset(movies):
     movie_list = LinkedList()
@@ -40,7 +41,6 @@ def get_genre():
                 potential_string += " | "
         potential_string += '   '
         potential_genre = str(input(potential_string))
-        #print("\n")
         if len(potential_genres) == 1:
             if potential_genre.lower() == 'y' or potential_genre.lower() == 'yes':
                 return potential_genres[0]
@@ -50,19 +50,15 @@ def get_genre():
 
 def get_movies(target_genre):
     current_movie_node = movie_list.get_head_node()
-    #print(current_movie_node.get_value())
     target_movies = []
     movie_string = ""
     while current_movie_node != None:
         current_movie_data = current_movie_node.get_value()
-        #print(current_movie_data)
         if current_movie_data is not None:
             current_movie_genres = current_movie_data[0]
-            #print(current_movie_genres)
             if target_genre in current_movie_genres:
                 target_movies += [current_movie_data]
         current_movie_node = current_movie_node.get_next_node()
-    #print(target_movies)
     count = 0 
     movie_string += "********************************************"
     for movie in target_movies:
@@ -79,7 +75,6 @@ def movie_search(movie_list, target_genre=None):
     while searching:
         if target_genre is None:
             target_genre = get_genre()
-        #print(target_genre)
         genre_movies = get_movies(target_genre)
         print(genre_movies)
         search_again = str(input("\nWould you like to search for a different genre? y/n ")).lower()
@@ -87,10 +82,10 @@ def movie_search(movie_list, target_genre=None):
             searching = False
         target_genre = None
     
-def test():
+def cinema_list():
     greeting()
     movie_search(movie_list)
     farewell()
 
 movie_list = establish_movie_dataset(movies)
-test()
+cinema_list()
