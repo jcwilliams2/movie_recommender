@@ -1,20 +1,27 @@
 from movie_data import *
 from linkedlist import LinkedList
 
+# Program name
 program_name = 'Cinema List'
 
+# Greeting upon running of program
 def greeting():
     print("Welcome to " + program_name + "!\n")
 
+# Farewell before closure of program
 def farewell():
     print("\nGoodbye and thank you for using " + program_name + "!")
 
+# Function that creates Linked List of movies stored
+# in list of movies in movie_data.py
 def establish_movie_dataset(movies):
     movie_list = LinkedList()
     for movie in movies:
         movie_list.insert_head_node(movie)
     return movie_list
 
+# Function queries user to determine the genre
+# to search for in get_movies() function
 def get_genre():
     potential_genres = []
     while len(potential_genres) == 0:
@@ -48,6 +55,9 @@ def get_genre():
             return potential_genre
         print("Didn't quite catch that. Please try again.")
 
+# Function compiles a list of the movies from the linked list of
+# movie data and returns a string containing the movie titles, 
+# director name(s), and release year
 def get_movies(target_genre):
     current_movie_node = movie_list.get_head_node()
     target_movies = []
@@ -68,8 +78,9 @@ def get_movies(target_genre):
         count += 1
     return movie_string
 
-
-
+# Function contains a loop to allow the user to search
+# the data structure multiple times by making calls to
+# get_genre() and get_movies() functions
 def movie_search(movie_list, target_genre=None):
     searching = True
     while searching:
@@ -81,11 +92,15 @@ def movie_search(movie_list, target_genre=None):
         if search_again != 'y':
             searching = False
         target_genre = None
-    
+
+# The compilation of calls to greeting,
+# movie_search, and farewell into 1 encompassing function
 def cinema_list():
     greeting()
     movie_search(movie_list)
     farewell()
 
+# calls to establish the linked list data structure
+# and to run the movie querying program
 movie_list = establish_movie_dataset(movies)
 cinema_list()
